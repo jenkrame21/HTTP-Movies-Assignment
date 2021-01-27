@@ -5,6 +5,10 @@ body {
   background-color: #f2f2f2;
 }
 
+h2 {
+  margin-top: 0;
+}
+
 .movie-card {
   background-color: #fff;
   border: 0;
@@ -14,6 +18,8 @@ body {
   cursor: pointer;
   position: relative;
   margin: 1rem auto;
+  text-align: center;
+  width: 70%;
 }
 
 .movie-director {
@@ -62,6 +68,19 @@ body {
   background-color: lightseagreen;
 }
 .save-button:hover {
+  background-color: green;
+  color: white;
+}
+
+.update-button {
+  position: absolute;
+  top: 70px;
+  right: 25px;
+  border: 1px solid grey;
+  padding: 5px 10px;
+  background-color: lightseagreen;
+}
+.update-button:hover {
   background-color: green;
   color: white;
 }
