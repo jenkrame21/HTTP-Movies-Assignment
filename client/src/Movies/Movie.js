@@ -6,6 +6,7 @@ import MovieCard from "./MovieCard";
 function Movie(props, { addToSavedList }) {
   const [movie, setMovie] = useState(null);
   const params = useParams();
+  const { id } = props.match.params;
 
   const fetchMovie = (id) => {
     axios
@@ -19,9 +20,8 @@ function Movie(props, { addToSavedList }) {
   };
 
   const updateMovie = () => {
-    // console.log("Update Movie Button Clicked!");
-    // console.log(props);
-    // props.history.push(`/api/movies/:id`);
+    console.log("Update Movie Button Clicked!", props.history);
+    props.history.push(`/update-movie/${id}`);
   };
 
   useEffect(() => {

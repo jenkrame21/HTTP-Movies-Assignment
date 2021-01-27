@@ -12,12 +12,12 @@ const initialMovie = {
 };
 
 const UpdateMovie = () => {
-    const [movie, setMovie] = useState(initialMovie);
+    const [form, setForm] = useState(initialMovie);
 
     const handleChange = e => {
         // console.log(e.target);
-        setMovie({
-            ...movie,
+        setForm({
+            ...form,
             [e.target.name]: e.target.value
         })
     };
@@ -30,21 +30,21 @@ const UpdateMovie = () => {
                     name="title"
                     placeholder="Title"
                     type="text"
-                    value={movie.title}
+                    value={form.title}
                     onChange={handleChange}
                 />
                 <input
                     name="director"
                     type="text"
                     placeholder="Director"
-                    value={movie.director}
+                    value={form.director}
                     onChange={handleChange}
                 />
                 <input
                     name="metascore"
                     type="number"
                     placeholder="Metascore"
-                    value={movie.metascore}
+                    value={form.metascore}
                     onChange={handleChange}
                 />
                 <input
@@ -52,7 +52,7 @@ const UpdateMovie = () => {
                     name="actors"
                     type="text"
                     placeholder="Actor Name"
-                    value={movie.actors.actorName}
+                    value={form.actors.actorName}
                     onChange={handleChange}
                 />
                 <input
@@ -60,7 +60,7 @@ const UpdateMovie = () => {
                     name="actors"
                     type="text"
                     placeholder="Actor Name"
-                    value={movie.actors.actorName}
+                    value={form.actors.actorName}
                     onChange={handleChange}
                 />
                 <input
@@ -68,7 +68,7 @@ const UpdateMovie = () => {
                     name="actors"
                     type="text"
                     placeholder="Actor Name"
-                    value={movie.actors.actorName}
+                    value={form.actors.actorName}
                     onChange={handleChange}
                 />
                 <button>Update</button>
