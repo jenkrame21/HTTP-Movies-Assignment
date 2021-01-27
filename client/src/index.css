@@ -9,6 +9,34 @@ h2 {
   margin-top: 0;
 }
 
+.updateMovieTitle {
+  text-align: center;
+  margin: 0;
+  padding: 2% 0;
+}
+
+button {
+  width: 70px;
+}
+button:hover {
+  background-color: green;
+  color: white;
+}
+
+form {
+  margin: auto;
+  padding: 0 2%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  width: 50%;
+}
+
+input {
+  padding: 1%;
+  margin: 2% 0;
+}
+
 .movie-card {
   background-color: #fff;
   border: 0;
@@ -19,7 +47,7 @@ h2 {
   position: relative;
   margin: 1rem auto;
   text-align: center;
-  width: 70%;
+  width: 60%;
 }
 
 .movie-director {
@@ -67,10 +95,6 @@ h2 {
   padding: 5px 10px;
   background-color: lightseagreen;
 }
-.save-button:hover {
-  background-color: green;
-  color: white;
-}
 
 .update-button {
   position: absolute;
@@ -79,10 +103,6 @@ h2 {
   border: 1px solid grey;
   padding: 5px 10px;
   background-color: lightseagreen;
-}
-.update-button:hover {
-  background-color: green;
-  color: white;
 }
 
 .home-button {
