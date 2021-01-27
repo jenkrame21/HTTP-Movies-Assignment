@@ -1,18 +1,29 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useParams } from "react-router-dom";
+import axios from 'axios';
 
 const initialMovie = {
     title: "",
     director: "",
     metascore: "",
-    actors: [
-        {
-            actorName: ""
-        }
-    ]
+    stars: []
 };
 
 const UpdateMovie = () => {
     const [form, setForm] = useState(initialMovie);
+    const { id } = useParams();
+
+    useEffect(() => {
+        axios
+            .get(`http://localhost:5000/api/movies/${id}`)
+                .then((res) => {
+                    console.log("Successful Get UpdateMovie:", res.data);
+                    setForm(res.data);
+                })
+                .catch((err) => {
+                    console.log("Error useEffect UpdateMovie:", err)
+                })
+    }, []);
 
     const handleChange = e => {
         // console.log(e.target);
@@ -22,10 +33,15 @@ const UpdateMovie = () => {
         })
     };
 
+    const handleSubmit = e => {
+        axios
+            .put()
+    };
+
     return (
         <div>
             <h2 className="updateMovieTitle">Update Movie</h2>
-            <form>
+            <form onSubmit={handleSubmit}>
                 <input
                     name="title"
                     placeholder="Title"
@@ -47,30 +63,18 @@ const UpdateMovie = () => {
                     value={form.metascore}
                     onChange={handleChange}
                 />
-                <input
-                    id="actors"
-                    name="actors"
-                    type="text"
-                    placeholder="Actor Name"
-                    value={form.actors.actorName}
-                    onChange={handleChange}
-                />
-                <input
-                    id="actors"
-                    name="actors"
-                    type="text"
-                    placeholder="Actor Name"
-                    value={form.actors.actorName}
-                    onChange={handleChange}
-                />
-                <input
-                    id="actors"
-                    name="actors"
-                    type="text"
-                    placeholder="Actor Name"
-                    value={form.actors.actorName}
-                    onChange={handleChange}
-                />
+                {
+                    form.stars.map(star =>{
+                        return(
+                            <input
+                                key={star}
+                                type="text"
+                                name="stars"
+                                value={star}
+                            />
+                        )
+                    })
+                }
                 <button>Update</button>
             </form>
         </div>

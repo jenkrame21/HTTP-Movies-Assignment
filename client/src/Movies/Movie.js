@@ -20,7 +20,7 @@ function Movie(props, { addToSavedList }) {
   };
 
   const updateMovie = () => {
-    console.log("Update Movie Button Clicked!", props.history);
+    // console.log("Update Movie Button Clicked!", props.history);
     props.history.push(`/update-movie/${id}`);
   };
 
