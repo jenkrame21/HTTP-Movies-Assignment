@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import axios from 'axios';
 
 const initialMovie = {
@@ -9,9 +9,10 @@ const initialMovie = {
     stars: []
 };
 
-const UpdateMovie = () => {
+const UpdateMovie = props => {
     const [form, setForm] = useState(initialMovie);
     const { id } = useParams();
+    const { push } = useHistory();
 
     useEffect(() => {
         axios
@@ -23,7 +24,7 @@ const UpdateMovie = () => {
                 .catch((err) => {
                     console.log("Error useEffect UpdateMovie:", err)
                 })
-    }, []);
+    }, [id]);
 
     const handleChange = e => {
         // console.log(e.target);
@@ -35,7 +36,18 @@ const UpdateMovie = () => {
 
     const handleSubmit = e => {
         axios
-            .put()
+            .put(`http://localhost:5000/api/movies/${id}`, form)
+                .then((res) => {
+                    // 1. set data to server side
+                    console.log("Submit Put Success UpdateMovie:", res.data);
+                    // 2. set data to client side
+                    props.setMovieList(res.data);
+                    // ROUTE NOT WORKING
+                    // push(`/movies`)
+                })
+                .catch((err) => {
+                    console.log("Error Submit UpdateMovie:", err.message);
+                });
     };
 
     return (
@@ -68,9 +80,11 @@ const UpdateMovie = () => {
                         return(
                             <input
                                 key={star}
-                                type="text"
                                 name="stars"
+                                type="text"
+                                placeholder="Star Name"
                                 value={star}
+                                onChange={handleChange}
                             />
                         )
                     })

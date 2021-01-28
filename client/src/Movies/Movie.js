@@ -24,6 +24,10 @@ function Movie(props, { addToSavedList }) {
     props.history.push(`/update-movie/${id}`);
   };
 
+  const deleteMovie = () => {
+    console.log("Delete Button Clicked!");
+  };
+
   useEffect(() => {
     fetchMovie(params.id);
   }, [params.id]);
@@ -41,6 +45,9 @@ function Movie(props, { addToSavedList }) {
       </button>
       <button className="update-button" onClick={updateMovie}>
         Update
+      </button>
+      <button className="delete-button" onClick={deleteMovie}>
+        Delete
       </button>
     </div>
   );
