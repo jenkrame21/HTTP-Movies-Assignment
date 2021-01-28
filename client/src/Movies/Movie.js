@@ -15,9 +15,9 @@ function Movie(props, { addToSavedList }) {
       .catch((err) => console.log(err.response));
   };
 
-  const saveMovie = () => {
-    addToSavedList(movie);
-  };
+  // const saveMovie = () => {
+  //   addToSavedList(movie);
+  // };
 
   const updateMovie = () => {
     // console.log("Update Movie Button Clicked!", props.history);
@@ -30,7 +30,7 @@ function Movie(props, { addToSavedList }) {
       .delete(`http://localhost:5000/api/movies/${id}`)
         .then((res) => {
           // console.log("Successful Delete Movie:", res);
-          props.setMovies(res.data);
+          props.setMovieList(res.data);
           // NOT PUSHING TO /movies and have to refresh to remove for some reason
           props.history.push("/movies");
         })
@@ -51,7 +51,7 @@ function Movie(props, { addToSavedList }) {
     <div className="save-wrapper">
       <MovieCard movie={movie} />
 
-      <button className="save-button" onClick={saveMovie}>
+      <button className="save-button">
         Save
       </button>
       <button className="update-button" onClick={updateMovie}>
