@@ -25,7 +25,18 @@ function Movie(props, { addToSavedList }) {
   };
 
   const deleteMovie = () => {
-    console.log("Delete Button Clicked!");
+    // console.log("Delete Button Clicked!");
+    axios
+      .delete(`http://localhost:5000/api/movies/${id}`)
+        .then((res) => {
+          // console.log("Successful Delete Movie:", res);
+          props.setMovies(res.data);
+          // NOT PUSHING TO /movies and have to refresh to remove for some reason
+          props.history.push("/movies");
+        })
+        .catch((err) => {
+          console.log("Error Delete Movie:", err.message);
+        });
   };
 
   useEffect(() => {

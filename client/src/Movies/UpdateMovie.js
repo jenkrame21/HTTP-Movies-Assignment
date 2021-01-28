@@ -43,7 +43,7 @@ const UpdateMovie = props => {
                     // 2. set data to client side
                     props.setMovieList(res.data);
                     // ROUTE NOT WORKING
-                    // push(`/movies`)
+                    push(`/movies`)
                 })
                 .catch((err) => {
                     console.log("Error Submit UpdateMovie:", err.message);
