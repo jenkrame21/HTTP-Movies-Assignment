@@ -5,12 +5,12 @@ import axios from 'axios';
 const initialMovie = {
     title: "",
     director: "",
-    metascore: "",
+    metascore: 0,
     stars: []
 };
 
 const UpdateMovie = props => {
-    const [form, setForm] = useState(initialMovie);
+    const [updateForm, setUpdateForm] = useState(initialMovie);
     const { id } = useParams();
     const { push } = useHistory();
 
@@ -18,8 +18,8 @@ const UpdateMovie = props => {
         axios
             .get(`http://localhost:5000/api/movies/${id}`)
                 .then((res) => {
-                    console.log("Successful Get UpdateMovie:", res.data);
-                    setForm(res.data);
+                    // console.log("Successful Get UpdateMovie:", res.data);
+                    setUpdateForm(res.data);
                 })
                 .catch((err) => {
                     console.log("Error useEffect UpdateMovie:", err)
@@ -28,15 +28,15 @@ const UpdateMovie = props => {
 
     const handleChange = e => {
         // console.log(e.target);
-        setForm({
-            ...form,
+        setUpdateForm({
+            ...updateForm,
             [e.target.name]: e.target.value
         })
     };
 
     const handleSubmit = () => {
         axios
-            .put(`http://localhost:5000/api/movies/${id}`, form)
+            .put(`http://localhost:5000/api/movies/${id}`, updateForm)
                 .then((res) => {
                     // 1. set data to server side
                     console.log("Submit Put Success UpdateMovie:", res.data);
@@ -58,25 +58,25 @@ const UpdateMovie = props => {
                     name="title"
                     placeholder="Title"
                     type="text"
-                    value={form.title}
+                    value={updateForm.title}
                     onChange={handleChange}
                 />
                 <input
                     name="director"
                     type="text"
                     placeholder="Director"
-                    value={form.director}
+                    value={updateForm.director}
                     onChange={handleChange}
                 />
                 <input
                     name="metascore"
                     type="number"
                     placeholder="Metascore"
-                    value={form.metascore}
+                    value={updateForm.metascore}
                     onChange={handleChange}
                 />
                 {
-                    form.stars.map(star =>{
+                    updateForm.stars.map(star =>{
                         return(
                             <input
                                 key={star}
