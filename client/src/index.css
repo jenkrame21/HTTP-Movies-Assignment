@@ -7,10 +7,10 @@ body {
 
 h2 {
   margin-top: 0;
+  text-align: center;
 }
 
 .updateMovieTitle {
-  text-align: center;
   margin: 0;
   padding: 2% 0;
 }

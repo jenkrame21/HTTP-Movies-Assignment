@@ -34,7 +34,7 @@ const UpdateMovie = props => {
         })
     };
 
-    const handleSubmit = e => {
+    const handleSubmit = () => {
         axios
             .put(`http://localhost:5000/api/movies/${id}`, form)
                 .then((res) => {
